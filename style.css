@@ -102,3 +102,16 @@ nav {
     -moz-box-shadow: 15px 21px 3px 6px rgba(255,110,110,0.72);
 }
 
+.promotion {
+    width: 100vw;
+    display: flex;
+}
+
+.promosi {
+    width: 50%;
+    height: 50vw;
+}
+
+.promoi-judul {
+    width: 50%;
+}
