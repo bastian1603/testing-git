@@ -6,6 +6,13 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
 </head>
 <body>
         
@@ -13,13 +20,13 @@
 
     <nav class="flex">
         <div class="container flex">
-            <a href="/" class="logo flex"><img src="" alt="">Lj Beuty House</a>
+            <a href="/" class="logo flex lora"><img src="logo lj beauty house.png" alt="" width="50px">|   Lj Beauty House</a>
             
-            <ul class="nav-links flex">
-                <li><a href="">Home</a></li>
-                <li><a href="">Catalog</a></li>
-                <li><a href="">About Us</a></li>
-                <li><a href="">Contact Us</a></li>
+            <ul class="nav-links flex poppins">
+                <li><a href="/">Home</a></li>
+                <li><a href="#product">Catalog</a></li>
+                <li><a href="#about_us">About Us</a></li>
+                <li><a href="#contact">Contact Us</a></li>
             </ul>
 
             <div class="search-input flex">
@@ -40,7 +47,7 @@
         <div class="body-container">
             
             <div class="flex ">
-                <div class="title">
+                <div class="title poppins">
                     <h1>
                         Revitalize Your Skin Revive Your Soul
 
@@ -49,14 +56,14 @@
             </div>
 
             <div class="flex">
-                <div class="text">
+                <div class="text lora">
                     The ultimate destination for makeup and skincare enthusiasts.
     Achieve the radiant, healthy-looking skin you've always wanted.
                 </div>
             </div>
 
             <div class="flex">
-                <div class="discover flex">
+                <div class="discover flex poppins">
                     Discover More
                 </div>
             </div>
@@ -70,33 +77,71 @@
     </section>
 
     <!-- Bagian Product -->
+    <section class="best-product flex">
+        <div class="promosi-judul poppins">
+            Our <span class="purple">Best</span> Pick
+        </div>
+
+        <div class="product flex poppins">
+
+            <div class="card flex">
+                <img src="68c13841-6fa6-48fb-b424-5ae2ac035f69.jpg" alt="">
+                <div class="card-text">The Originote Hyalucera</div>
+            </div>
+
+            <div class="card flex">
+                <img src="ecfba84d704fca9963822ca88e931974.jpg" alt="">
+                <div class="card-text">The Originote Cica Moisturizer</div>
+            </div>
+
+            <div class="card flex">
+                <img src="id-11134207-7r991-lukf7sn3yysx03.jpeg" alt="">
+                <div class="card-text">Glowsophy Watermelon</div>
+            </div>
+
+            <div class="card flex">
+                <img src="product_1680248071_Snapinsta._800x800.png" alt="">
+                <div class="card-text">Glad2Glow Blueberry</div>
+            </div>
+
+        </div>
+
+    </section>
+       
+
 
     <section class="promotion flex">
+        <div class="promosi about-us flex" id="about_us">
+            <div class="judul-about-us poppins"><span class="gray">About</span> <span class="green">Us</span></div>
+
+            <div class="isi-about-us lora">LJ Beauty House is a premium skincare and cosmetics store offering a curated selection of moisturizers, serums, cleansers, sunscreens, foundations, eyeshadows, and lipsticks. Each product is chosen for its quality and effectiveness, catering to various skin types and beauty needs. Our knowledgeable team provides personalized beauty tips and recommendations. Join the LJ Beauty House community for the latest products, exclusive deals, and beauty tips, and experience the difference quality skincare and cosmetics can make.</div>
+        </div>
+
 
         <div class="promosi flex">
-            <div class="promosi-judul">
-                Benefits Choosing LJ Beauty
+            <div class="promosi-judul poppins">
+                <span class="pink">Benefits</span> Choosing LJ <span class="green">Beauty</span> <span class="pink">House</span>?
             </div>
             
-            <div class="promosi-container">
+            <div class="promosi-container poppins">
                 <div class="benefit">
                     <img src="mobil.png" alt="">
-                    <div class="benefit-isi">Pengantarannya cepat</div>
+                    <div class="benefit-isi">Same-Day Delivery</div>
                 </div>
                 
                 <div class="benefit">
                     <img src="murah.png" alt="">
-                    <div class="benefit-isi">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda officia nostrum vel explicabo. Laborum, id?</div>
+                    <div class="benefit-isi">Affordable Price</div>
                 </div>
                 
                 <div class="benefit">
                     <img src="Cart.png" alt="">
-                    <div class="benefit-isi">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda officia nostrum vel explicabo. Laborum, id?</div>
+                    <div class="benefit-isi">Safety Packaging</div>
                 </div>
 
                 <div class="benefit">
                     <img src="Quality.png" alt="">
-                    <div class="benefit-isi">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda officia nostrum vel explicabo. Laborum, id?</div>
+                    <div class="benefit-isi">Original Item Guaranteed</div>
                 </div>
    
             </div>
@@ -105,32 +150,58 @@
 
     <!-- Isi - product -->
 
-    <section class="product">
+    <div class="contact-us flex" id="contact_us">
+        <div class="judul-contact-us poppins"><span class="green">Contact</span> <span class="pink">Us</span></div>
 
-        <div class="card flex">
-            <img src="68c13841-6fa6-48fb-b424-5ae2ac035f69.jpg" alt="">
-            <div class="card-text"></div>
-        </div>
-
-        <div class="card flex">
-            <img src="ecfba84d704fca9963822ca88e931974.jpg" alt="">
-            <div class="card-text"></div>
-        </div>
-
-        <div class="card flex">
-            <img src="id-11134207-7r991-lukf7sn3yysx03.jpeg" alt="">
-            <div class="card-text"></div>
-        </div>
-
-        <div class="card flex">
-            <img src="product_1680248071_Snapinsta._800x800.png" alt="">
-            <div class="card-text"></div>
-        </div>
-
-    </section>
+        <form action="/" method="get" class="contact-us-form flex">
+            <input type="text" placeholder="Input Your Name" id="name" required>
+            <input type="email" id="email" placeholder="Input Your Email" required>
+            <textarea name="message" rows="5" id="message" placeholder="Type Your Message Here" required></textarea>
+            
+            <input type="submit" value="Send Your Message" id="button">
+            
+        </form>
+    </div>
 
 
     <!-- Bagian Footer -->
+     <section class="footer flex">
+        <div class="footer-judul poppins"><span class="pink">LJ</span> <span class="gray">Beauty</span> <span class="green">House</span></div>
 
+        <table class="footer-table lora">
+            <thead class="footer-head">
+                <tr>
+                    <td><b>Product</b></td>
+                    <td><b>Resources</b></td>
+                    <td><b>Company</b></td>
+                </tr>
+            </thead>
+            <tbody class="footer-body">
+                <tr>
+                    <td>Pricing</td>
+                    <td>Blog</td>
+                    <td>About Us</td>
+                </tr>
+                <tr>
+                    <td>Customer Service</td>
+                    <td>Guides & Tutorials</td>
+                    <td>Media Kit</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Help Center</td>
+                    <td>Career</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="credit flex poppins">
+            <div>Terms & Privacy</div>
+            <div>Security</div>
+            <div>Status</div>
+            <div>©2024 | LJ Beauty House</div>
+        </div>
+
+     </section>
 </body>
 </html>
