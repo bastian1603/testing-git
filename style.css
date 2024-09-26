@@ -104,14 +104,65 @@ nav {
 
 .promotion {
     width: 100vw;
-    display: flex;
+
+    margin-top: 90px;
 }
 
 .promosi {
-    width: 50%;
-    height: 50vw;
+
+    height: 50vh;
+    flex-direction: column;
 }
 
-.promoi-judul {
-    width: 50%;
+.promosi-judul {
+    margin: 45px 0px;
+}
+
+.promosi-container {
+    display: grid;
+
+    width: 80%;
+    height: 80%;
+
+    gap: 40px;
+
+    max-width: 600px;
+    max-height: 600px;
+
+    min-width: 350px;
+    min-height: 350px;
+
+    grid-template-columns: 45% 45%;
+    grid-template-rows: 45% 45%;
+
+    background-color: yellow;
+    border: black 1px solid;
+
+
+}
+
+.benefit {
+    display: flex;
+    align-items: center;
+}
+
+.benefit img {
+    width: 50px;
+    height: 50px;
+}
+
+.product {
+    display: flex;
+
+    gap: 10px;
+
+    width: 100vw;
+    height: 400px;
+}
+
+.card {
+    width: 200px;
+    height: 200px;
+
+    border: black 1px solid;
 }
