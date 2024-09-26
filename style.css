@@ -161,8 +161,15 @@ nav {
 }
 
 .card {
-    width: 200px;
+    margin-top: 150px;
+
+    width: 150px;
     height: 200px;
 
     border: black 1px solid;
+    border-radius: 10px;
+}
+
+.card img {
+    width: 150px;
 }
