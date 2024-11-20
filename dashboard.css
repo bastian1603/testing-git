@@ -1,0 +1,154 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.wrapper {
+    width: 100%;
+}
+
+.sidebar {
+    width: 350px;
+    height: 100vh;
+    background-color: aliceblue;
+
+    display: flex;
+    flex-direction: column;
+
+    position: fixed;
+    top: 0px;
+
+}
+
+.profile-container {
+    width: auto;
+    height: 75px;
+    
+    display: flex;
+    align-items: center;
+
+}
+
+.profile {
+    width: 200px;
+    height: 60px;
+    min-height: 60px;
+    padding: 0px 0px 0px 17px;
+    margin: 0px 0px 0px 15px;
+    display: flex;
+    align-items: center;
+
+    border-radius: 10px;
+
+    transition-duration: 200ms;
+
+}
+
+.sidebar ul {
+    margin: 10px 0px;
+    padding-left: 15px;
+}
+
+hr {
+    padding: 0;
+    margin: 0;
+}
+
+.profile:hover {
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
+.profile-pic {
+    height: 40px;
+    margin-right: 20px;
+
+    border-radius: 50%;
+}
+
+li {
+    list-style: none;
+}
+
+.flex-start {
+    display: flex;
+    align-items: flex-start;
+}
+
+.li-fitur {
+    width: 275px;
+
+    border-radius: 10px;
+
+    padding: 9px 0px 9px 15px;
+    transition-duration: 200ms;
+}
+
+.li-fitur:hover {
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    margin-right: 10px;
+    width: 27px;
+}
+
+
+.task p {
+    margin: 10px;
+}
+
+.task {
+    height: auto;
+    overflow-y: auto;
+}
+
+
+.setting-container{
+    height: 60px;
+    min-height: 60px;
+
+    margin-top: auto;
+
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.setting-container hr {
+    width: 100%;
+
+}
+
+.setting {
+    margin-left: 15px;
+}
+
+.setting .icon {
+    transition: transform 1000ms ease;
+}
+
+.setting-container:hover .setting .icon {
+    transform: rotate(270deg) ;
+}
+
+.setting-container:hover {
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
+.konten {
+    color: black;
+
+    width: calc(100% - 350px);
+    left: 330px;
+    height: 200vh;
+    left: 350px;
+
+    position: relative;
+    background-color: yellow;
+}
