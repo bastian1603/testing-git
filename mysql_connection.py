@@ -15,13 +15,14 @@ mycursor = mydb.cursor()
 # anggota1 = ("siapa",)
 # mycursor.execute(rumus_input, anggota1)
 
-mycursor.execute("SELECT * FROM pengguna WHERE id = %s", (3, ))
+mycursor.execute("SELECT * FROM pengguna WHERE id = %s LIMIT 1 ", (1, ))
 
 temp = mycursor.fetchall()
 
 # for i in temp:
     # print(i)
 
+print(temp)
 
 if(temp):
     print("berhasil")
