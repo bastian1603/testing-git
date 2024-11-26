@@ -61,6 +61,8 @@ def input_catatan(conn, username):
 
         cursor.execute(f"INSERT INTO catatan(username, judul_catatan, isi_catatan) VALUES(`{username}`, `{judul_catatan}`, `{isi_catatan}`)")
     
+        conn.commit()
+        
     except Exception as e:
         print(e)
         
