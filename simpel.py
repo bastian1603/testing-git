@@ -20,12 +20,42 @@ connection_pool = mysql.connector.pooling.MySQLConnectionPool(
 )
 
 
-user = None
+user = False
 
 if __name__ == "__main__":
     
     while(True):
-        if not user:
+                        
+        if user:
+            
+            perintah = int(input("mau ngapain?"))
+            
+            match perintah:
+                case 1:
+                    
+                    try:
+                        conn = connection_pool.get_connection()
+                        
+                        no_oop.input_catatan(conn, user)
+                        
+                    except Exception as e:
+                        print(e)
+                    
+                    finally:
+                        conn.close()
+                
+                case 2:
+                    conn = connection_pool.get_connection()
+                    cursor = conn.cursor()
+                    
+                    execute = cursor.execute("SELECT judul_catatan, isi_catatan FROM catatan WHERE username = %s", (user, ))
+                    
+                    data = cursor.fetchall()
+                    
+                    for i in data:
+                        print(i)
+        
+        else:
             
             try:
                 print("login dulu baru bisa mengakses")        
@@ -39,7 +69,7 @@ if __name__ == "__main__":
                 
                 match pilihan:
                     case 1:
-                        login = no_oop.login(conn)
+                        user = no_oop.login(conn)
                     case 2:
                         no_oop.daftar_akun(conn)
                     case _:
@@ -50,35 +80,5 @@ if __name__ == "__main__":
                 
             finally:
                 conn.close()
-            
-        else:
-            
-            perintah = int(input("mau ngapain?"))
-            
-            match perintah:
-                case 1:
-                    
-                    try:
-                        conn = connection_pool.get_connection()
-                        
-                        no_oop.input_catatan(conn)
-                        
-                    except Exception as e:
-                        print(e)
-                    
-                    finally:
-                        conn.close()
-                
-                case 2:
-                    conn = connection_pool.get_connection()
-                    cursor = conn.cursor()
-                    
-                    execute = cursor.execute("SELECT * FROM catatan")
-                    
-                    data = cursor.fet2chall()
-                    
-                    for i in data:
-                        print(i)
-                    
                     
                     

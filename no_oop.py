@@ -15,9 +15,9 @@ def daftar_akun(conn):
             continue
         
         cursor = conn.cursor()    
-        cursor.execute(f"SELECT * FROM pengguna WHERE username = {username}")    
+        cursor.execute("SELECT * FROM pengguna WHERE username = %s", (username, ))    
 
-        data = cursor.fetchone():
+        data = cursor.fetchone()
         cursor.close()
             
         if data:
@@ -28,9 +28,12 @@ def daftar_akun(conn):
     password = input("masukkan password : ")
     
     cursor = conn.cursor()
-    cursor.execute(f"INSERT INTO pengguna(username, password) VALUES (`{username}`, `{password}`)")
+    cursor.execute("INSERT INTO pengguna(username, password) VALUES (%s, %s)", (username, password))
     
-    print("Akun berhasil didaftarkan")
+    conn.commit()
+    cursor.close()
+    
+    print("Akun berhasil didaftarkan\n")
 
 
 def login(conn):
@@ -38,18 +41,16 @@ def login(conn):
     password = input("masukkan password : ")
     
     cursor = conn.cursor()
-    cursor.execute(f"SELECT username, password FROM pengguna WHERE username = {username} AND password = {password} LIMIT 1")
+    cursor.execute("SELECT username, password FROM pengguna WHERE username = %s AND password = %s LIMIT 1", (username, password))
     data = cursor.fetchone()
     
     cursor.close()
     
     if data:
-        print("Berhasil masuk")
-        return True
+        print("Berhasil masuk\n")
+        return username
     
     print("username atau password salah")
-    
-    return False
 
 
 def input_catatan(conn, username):
@@ -59,7 +60,7 @@ def input_catatan(conn, username):
         judul_catatan = input("masukkan judul catatan : ")
         isi_catatan = input("masukkan isi catatan : ")
 
-        cursor.execute(f"INSERT INTO catatan(username, judul_catatan, isi_catatan) VALUES(`{username}`, `{judul_catatan}`, `{isi_catatan}`)")
+        cursor.execute("INSERT INTO catatan(username, judul_catatan, isi_catatan) VALUES(%s, %s, %s)", (username, judul_catatan, isi_catatan))
     
         conn.commit()
         
@@ -77,7 +78,8 @@ def input_tugas(conn, username):
         judul_tugas = input("masukkan judul tugas : ")
         isi_tugas = input("masukkan isi catatan : ")
         tanggal_tugas = input("masukkan")
-        cursor.execute(f"INSERT INTO tugas(username, judul_tugas, isi_tugas, tanggal_tugas, waktu_tugas) VALUES(`{username}`, `{judul_tugas}`, `{isi_tugas}`, `{tanggal_tugas}, {waktu_tugas} `)")
+        waktu_tugas = input("masukkan waktu tugas")
+        cursor.execute("INSERT INTO tugas(username, judul_tugas, isi_tugas, tanggal_tugas, waktu_tugas) VALUES()", (username, judul_tugas, isi_tugas, tanggal_tugas, waktu_tugas))
     
     except Exception as e:
         print(e)
@@ -90,7 +92,7 @@ def input_jadwal(conn, username):
     try:
         cursor = conn.cursor()
         
-        cursor.execute(f"INSERT INTO jadwal(username, )")
+        cursor.execute("INSERT INTO jadwal(username, )")
         
     except Exception as e:
         print(e)

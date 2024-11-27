@@ -22,8 +22,9 @@ class Lifetivity:
     # menginisiasi data-data untuk aplikasi program
     def __init__(self, dbconfig):
         self.id_akun = None
-        self.connection_pool = None
         
+        
+        self.connection_pool = None
         
         try:
             self.connection_pool = mysql.connector.pooling.MySQLConnectionPool(
@@ -38,31 +39,10 @@ class Lifetivity:
             print(error)
         
         
-    def koneksi_database(self, fungsi_utama):
-            try:
-                koneksi = self.connection_pool()
-                cursor = koneksi.cursor()
-                
-                fungsi_utama(cursor)
-                
-            except Exception as e:
-                print(e)
-                
-            finally:
-                cursor.close()
-                koneksi.close()
-                
-                 
-    def fungsi_utama(cursor):
-        cursor.execute("SELECT * FROM anggota")
-        data = cursor.fetchall()
-        
-        for i in data:
-            print(i)
-        
-        
     # fungsi untuk melakukan pendaftaran akun
-    def daftar_akun(self, cursor):
+    def daftar_akun(self):
+
+        conn = self.connection_pool.get_connection()
         
         username = None
         password = None
@@ -92,6 +72,9 @@ class Lifetivity:
             if not syarat1 and not syarat2:
                 break
             
+        cursor = conn.cursor()
+        cursor.execute("INSERT INTO pengguna(username, password) VALUES (%s, %s)", (username, password))
+        
         print("akun berhasil di daftarkan\n")
         
         
@@ -99,6 +82,10 @@ class Lifetivity:
     def login(self):
         username = input("masukkan username : ")
         password = input("masukkan password : ")
+        
+        conn = self.connection_pool.get_connection()
+        
+        cursor = conn.cursor()
         
         cursor.execute(f"SELECT password FROM pengguna where username = `{username}` LIMIT 1")
         

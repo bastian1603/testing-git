@@ -1,19 +1,27 @@
-import tkinter as tk
+import lifetivity
 
-root = tk.Tk()
+# konfigurasi utama untuk databasenya
+dbconfig = {
+    "host" : "localhost",
+    "user" : "root",
+    "password" : "",
+    "database" : "testing"
+}
 
-root.title("gile nyoba dulu")
 
-root.geometry("400x300")
-
-
-label = tk.Label(root, text="HALO GEGNS", font=("Arial", 12))
-label.pack(pady=10)
-
-def tombol_ditekan():
-    label.config(text="text berubah")
+if __name__ == "__main__":
     
-button = tk.Button(root, text="Klik aku", command=tombol_ditekan)
-button.pack(pady=10)
-
-root.mainloop()
+    app = lifetivity(dbconfig)
+    
+    while True:
+        print('''silakan login terlebih dahulu
+(1) login
+(2) registrasi
+''')
+        input_halaman_login = int(input("masukkan pilihan perintah : "))
+        
+        match input_halaman_login:
+            case 1:
+                lifetivity.login()
+            case 2:
+                lifetivity.daftar_akun()
