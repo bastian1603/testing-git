@@ -1,6 +1,7 @@
 import mysql.connector
 from datetime import datetime
 
+
 def daftar_akun(conn):
     
     username = None
@@ -130,12 +131,16 @@ def data_tugas(conn, user):
 
 
 def __menghapus_data(conn, user_id, nama_tabel, id_item):
-    cursor = conn.cursor()
-    cursor.execute(f"DELETE FROM {nama_tabel} WHERE id_{nama_tabel} = %s AND id_user = %s", (id_item, user_id))
+    try:
+        cursor = conn.cursor()
+        cursor.execute(f"DELETE FROM {nama_tabel} WHERE id_{nama_tabel} = %s AND id_user = %s", (id_item, user_id))
+        conn.commit()
 
-    conn.commit()
-# def data_catatan(conn, user):
-#     return __mengambil_data(conn, user)
+    except Exception as e:
+        print(e)
+
+    finally:
+        cursor.close()
 
 
 def menghapus_catatan(conn, user, id_item):
@@ -164,4 +169,6 @@ def edit_catatan(conn, id_item):
         cursor.execute("UPDATE catatan SET judul_catatan = %s, isi_catatan = %s WHERE id_catatan = %s", (judul_baru, isi_baru, id_item))
 
         conn.commit()
+
+    except Exception as e:
         cursor.close()
