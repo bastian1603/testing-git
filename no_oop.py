@@ -77,14 +77,14 @@ def input_tugas(conn, username):
         
         judul_tugas = input("masukkan judul tugas : ")
         isi_tugas = input("masukkan isi catatan : ")
-        tanggal_tugas = input("masukkan tanggal dan waktu tenggatnya (format yyyy-mm-dd hh-mm) : ")
-        tanggal_tugas = datetime.strptime(tanggal_tugas, "%Y-%m-%d %H:%M")
-        tanggal_tugas = datetime.strftime(tanggal_tugas)
+        tenggat_tugas = input("masukkan tanggal dan waktu tenggatnya (format yyyy-mm-dd hh-mm) : ")
+        tenggat_tugas = datetime.strptime(tenggat_tugas, "%Y-%m-%d %H:%M")
         
-        
-        waktu_tugas = input("masukkan waktu tugas")
-        cursor.execute("INSERT INTO tugas(id_user, judul_tugas, isi_tugas, tanggal_tugas, waktu_tugas) VALUES(%s, %s, %s, %s, %s)", (username, judul_tugas, isi_tugas, tanggal_tugas, waktu_tugas))
-    
+        cursor.execute("INSERT INTO tugas(id_user, judul_tugas, isi_tugas, tenggat) VALUES(%s, %s, %s, %s)", (username, judul_tugas, isi_tugas, tenggat_tugas))
+
+        print("berhasil di input!\n")
+        conn.commit()
+
     except Exception as e:
         print(e)
         
@@ -104,12 +104,15 @@ def input_jadwal(conn, username):
 
 def __mengambil_data(conn, user, nama_tabel):
     data = None
-    
+
     try:
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM %s WHERE id_user = %s", (nama_tabel, user))
+        cursor.execute(f"SELECT * FROM {nama_tabel} WHERE id_user = %s", (user,))
         data = cursor.fetchall()
-    
+
+        for i in data:
+            print(i)
+
     except Exception as e:
         print(e)
         
@@ -119,14 +122,46 @@ def __mengambil_data(conn, user, nama_tabel):
 
 
 def data_catatan(conn, user):
-    return __mengambil_data(conn, user)
+    return __mengambil_data(conn, user, "catatan")
 
 
 def data_tugas(conn, user):
-    return __mengambil_data(conn, user)
+    return __mengambil_data(conn, user, "tugas")
 
 
-def data_catatan(conn, user):
-    return __mengambil_data(conn, user)
+def __menghapus_data(conn, user_id, nama_tabel, id_item):
+    cursor = conn.cursor()
+    cursor.execute(f"DELETE FROM {nama_tabel} WHERE id_{nama_tabel} = %s AND id_user = %s", (id_item, user_id))
+
+    conn.commit()
+# def data_catatan(conn, user):
+#     return __mengambil_data(conn, user)
 
 
+def menghapus_catatan(conn, user, id_item):
+    cursor = conn.cursor()
+    __menghapus_data(conn, user, "catatan", id_item)
+    conn.commit()
+    cursor.close()
+
+    print("berhasil di delete\n")
+
+
+def menghapus_tugas(conn, user, id_item):
+    cursor = conn.cursor()
+    __menghapus_data(conn, user, "tugas", id_item)
+    conn.commit()
+    cursor.close()
+
+
+def edit_catatan(conn, id_item):
+    try:
+        cursor = conn.cursor()
+
+        judul_baru = input("Masukkan judul baru : ")
+        isi_baru = input("Masukkan isi yang baru : ")
+
+        cursor.execute("UPDATE catatan SET judul_catatan = %s, isi_catatan = %s WHERE id_catatan = %s", (judul_baru, isi_baru, id_item))
+
+        conn.commit()
+        cursor.close()
