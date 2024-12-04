@@ -7,10 +7,10 @@ import no_oop
 
 
 dbconfig = {
-    'host' : 'localhost',
-    'user' : 'root',
-    'password' : 'root',
-    'database' : 'testing'
+    'user': 'root',
+    'host': 'localhost',
+    'password': 'root',
+    'database': 'testing'
 }
 
 connection_pool = mysql.connector.pooling.MySQLConnectionPool(
@@ -25,11 +25,8 @@ id_item = -1
 
 
 if __name__ == "__main__":
-    
     while(True):
-        
-        
-                        
+
         if user:
             print("pilihan kegiatan:")
             print("(1) menambahkan catatan")
@@ -46,7 +43,6 @@ if __name__ == "__main__":
                     
                     try:
                         conn = connection_pool.get_connection()
-                        
                         no_oop.input_catatan(conn, user)
                         
                     except Exception as e:

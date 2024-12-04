@@ -28,6 +28,6 @@
 
 """Setup of the `mysql.connector` logger."""
 
-import logging
+import logger
 
 logger = logging.getLogger("mysql.connector")

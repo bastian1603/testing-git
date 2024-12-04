@@ -30,7 +30,7 @@ import uuid
 from base64 import b16decode
 from bisect import bisect
 from hashlib import md5
-import logging
+import logger
 import socket
 import collections
 

@@ -28,6 +28,6 @@
 
 """Setup of the `mysql.connector.aio` logger."""
 
-import logging
+import logger
 
 logger = logging.getLogger("mysql.connector.aio")

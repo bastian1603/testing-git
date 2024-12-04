@@ -1,57 +1,72 @@
 import mysql.connector
 from datetime import datetime
+import logger
 
 
 def daftar_akun(conn):
-    
-    username = None
-    
-    while(True):
-        username = input("masukkan username : ")
-        
-        syarat1 = " " in username
-        
-        if syarat1:
-            cursor.close()
-            continue
-        
-        cursor = conn.cursor()    
-        cursor.execute("SELECT * FROM pengguna WHERE username = %s", (username, ))    
+    try:
+        username = None
 
-        data = cursor.fetchone()
+        while (True):
+            username = input("masukkan username : ")
+
+            syarat1 = " " in username
+
+            if syarat1:
+                cursor.close()
+                continue
+
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM pengguna WHERE username = %s", (username,))
+
+            data = cursor.fetchone()
+            cursor.close()
+
+            if data:
+                continue
+            break
+
+        password = input("masukkan password : ")
+
+        cursor = conn.cursor()
+        cursor.execute("INSERT INTO pengguna(username, password) VALUES (%s, %s)", (username, password))
+
+        conn.commit()
+
+        print("Akun berhasil didaftarkan\n")
+        logger.info("Berhasil menambahkan akun")
+
+    except Exception as e:
+        logger.error(e)
+        print(e)
+
+    finally:
         cursor.close()
-            
-        if data:
-            continue
-        
-        break
-        
-    password = input("masukkan password : ")
-    
-    cursor = conn.cursor()
-    cursor.execute("INSERT INTO pengguna(username, password) VALUES (%s, %s)", (username, password))
-    
-    conn.commit()
-    cursor.close()
-    
-    print("Akun berhasil didaftarkan\n")
 
 
 def login(conn):
-    username = input("masukkan username : ")
-    password = input("masukkan password : ")
-    
-    cursor = conn.cursor()
-    cursor.execute("SELECT id FROM pengguna WHERE username = %s AND password = %s LIMIT 1", (username, password))
-    data = cursor.fetchone()
-    
-    cursor.close()
-    
-    if data:
-        print("Berhasil masuk\n")
-        return data[0]
-    
-    print("username atau password salah")
+    try:
+        username = input("masukkan username : ")
+        password = input("masukkan password : ")
+
+        cursor = conn.cursor()
+        cursor.execute("SELECT id FROM pengguna WHERE username = %s AND password = %s LIMIT 1", (username, password))
+        data = cursor.fetchone()
+
+        if data:
+            print("Berhasil masuk\n")
+            logger.info("Berhasil login")
+            return data[0]
+        else:
+            print("username atau password salah")
+            logger.warning("Gagal login username atau password salah")
+
+    except Exception as e:
+        logger.error(e)
+        print(e)
+
+    finally:
+        cursor.close()
 
 
 def input_catatan(conn, username):

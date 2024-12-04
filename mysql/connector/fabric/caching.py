@@ -27,7 +27,7 @@
 import bisect
 from datetime import datetime, timedelta
 from hashlib import sha1
-import logging
+import logger
 import threading
 
 from . import FabricShard
